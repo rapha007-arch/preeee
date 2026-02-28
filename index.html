@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>HALA MADRID · calculateur</title>
+  <!-- Polices : Space Mono (titre, heures, historique), Poppins (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <!-- Icône poubelle (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000000;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 16px;
+      color: #FFFFFF;
+    }
+
+    .mobile-frame {
+      max-width: 390px;
+      width: 100%;
+      background: #000000;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 844px;
+      padding: 0 12px 20px 12px;
+      position: relative;
+    }
+
+    .app-title {
+      font-family: 'Space Mono', 'Courier Prime', monospace;
+      font-weight: 700;
+      font-size: 28px;
+      color: #FFFFFF;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 0;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .title-spacer {
+      height: 30px;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .row-duo {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .field-input {
+      background-color: #000000;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      height: 50px;
+      padding: 0 12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: #FFD700;
+      outline: none;
+      width: 100%;
+      transition: border 0.15s, box-shadow 0.15s;
+    }
+
+    .field-input::placeholder {
+      color: #FFD700;
+      font-weight: 400;
+      opacity: 0.9;
+      font-size: 15px;
+    }
+
+    .field-input:focus {
+      border-color: #777777;
+      box-shadow: 0 0 0 1px #555;
+    }
+
+    .champ-petit {
+      width: 160px;
+      max-width: 160px;
+    }
+
+    .label-style {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: #CCCCCC;
+      letter-spacing: 0.3px;
+      margin-bottom: 6px;
+      display: block;
+      padding-left: 4px;
+    }
+
+    .row-depart-btn {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .depart-wrapper {
+      width: 200px;
+    }
+
+    .heure-input {
+      background-color: #000000;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      height: 50px;
+      padding: 0 12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 16px;
+      font-weight: 400;
+      color: #FF69B4;
+      outline: none;
+      width: 100%;
+      transition: border 0.15s, box-shadow 0.15s;
+    }
+
+    .heure-input::placeholder {
+      color: #FF69B4;
+      font-weight: 400;
+      opacity: 0.9;
+      font-size: 15px;
+    }
+
+    .heure-input:focus {
+      border-color: #777777;
+      box-shadow: 0 0 0 1px #555;
+    }
+
+    .champ-depart {
+      width: 200px;
+      max-width: 200px;
+    }
+
+    .btn-calculer {
+      width: 100px;
+      height: 50px;
+      background-color: #1E88E5;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #FFFFFF;
+      cursor: pointer;
+      box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
+      line-height: 1;
+      padding: 0 8px;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .btn-calculer:hover {
+      background-color: #42a5f5;
+      box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4);
+      transform: scale(1.02);
+    }
+
+    .btn-calculer:active {
+      background-color: #1565C0;
+      transform: scale(0.98);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .arrivee-wrapper {
+      width: 200px;
+      margin-bottom: 0;
+    }
+
+    .row-arrivee {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+
+    .champ-arrivee {
+      width: 200px;
+      max-width: 200px;
+    }
+
+    /* Section Historique avec tableau */
+    .historique-section {
+      margin-top: 30px;
+      background: #000000;
+      border-top: 1px solid #222222;
+      padding-top: 20px;
+      width: 100%;
+    }
+
+    .historique-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .historique-titre {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: #00FFA3;
+    }
+
+    /* Bouton poubelle */
+    .btn-trash {
+      background: transparent;
+      border: 1px solid #444;
+      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #FF69B4;
+      font-size: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-trash:hover {
+      background: rgba(255, 105, 180, 0.1);
+      border-color: #FF69B4;
+      transform: scale(1.05);
+    }
+
+    .btn-trash:active {
+      transform: scale(0.95);
+    }
+
+    /* Tableau d'historique */
+    .tableau-histo {
+      width: 100%;
+      border-collapse: collapse;
+      background: #0a0a0a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #333;
+    }
+
+    .tableau-histo td {
+      padding: 14px 12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 18px;
+      color: #FF69B4;
+      border-bottom: 1px solid #333;
+      text-align: center;
+    }
+
+    .tableau-histo tr:last-child td {
+      border-bottom: none;
+    }
+
+    .empty-histoire {
+      color: #FF69B4;
+      font-style: italic;
+      font-weight: 300;
+      text-align: center;
+      padding: 24px 8px;
+      opacity: 0.7;
+      font-size: 16px;
+      border: 1px dashed #444;
+      border-radius: 12px;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Dialog de confirmation personnalisé */
+    .confirm-dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1a1a1a;
+      border: 1px solid #FF69B4;
+      border-radius: 16px;
+      padding: 20px;
+      z-index: 1000;
+      max-width: 280px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: none;
+    }
+
+    .confirm-dialog p {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .confirm-dialog-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .confirm-btn {
+      padding: 8px 20px;
+      border-radius: 8px;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .confirm-btn.yes {
+      background: #FF69B4;
+      color: #000;
+    }
+
+    .confirm-btn.yes:hover {
+      background: #ff8ac9;
+    }
+
+    .confirm-btn.no {
+      background: #333;
+      color: #fff;
+    }
+
+    .confirm-btn.no:hover {
+      background: #444;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      display: none;
+    }
+
+    .foot-note {
+      height: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-frame">
+    <div class="app-title">HALA MADRID</div>
+    <div class="title-spacer"></div>
+
+    <div class="content">
+      <!-- Champs Hex et Decimal -->
+      <div class="row-duo">
+        <input type="text" id="hexField" class="field-input champ-petit" placeholder="Hex" value="e76bd7" maxlength="6">
+        <input type="text" id="decField" class="field-input champ-petit" placeholder="Décimal" value="241516">
+      </div>
+
+      <!-- Label et champ Heure départ -->
+      <span class="label-style">Heures départ</span>
+      <div class="row-depart-btn">
+        <div class="depart-wrapper">
+          <input type="text" id="heureDep" class="heure-input champ-depart" placeholder="HH:MM:SS" value="13:40:00">
+        </div>
+        <button class="btn-calculer" id="btnCalculer">Calculer</button>
+      </div>
+
+      <!-- Label et champ Heure arrivée -->
+      <span class="label-style">Heures finale</span>
+      <div class="row-arrivee">
+        <div class="arrivee-wrapper">
+          <input type="text" id="heureArr" class="heure-input champ-arrivee" placeholder="HH:MM:SS" value="13:48:20" readonly>
+        </div>
+      </div>
+
+      <!-- Section Historique avec tableau et poubelle -->
+      <div class="historique-section">
+        <div class="historique-header">
+          <div class="historique-titre">Historique</div>
+          <div class="btn-trash" id="btnTrash" title="Supprimer tout l'historique">
+            <i class="fas fa-trash-alt"></i>
+          </div>
+        </div>
+
+        <!-- Tableau d'historique -->
+        <div id="tableauContainer">
+          <table class="tableau-histo" id="histoTable">
+            <tbody id="histoTbody">
+              <!-- Les entrées seront ajoutées ici -->
+            </tbody>
+          </table>
+          <div id="emptyMessage" class="empty-histoire" style="display: block;">Aucune entrée pour l'instant</div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 10px;"></div>
+
+    <!-- Dialog de confirmation -->
+    <div class="overlay" id="overlay"></div>
+    <div class="confirm-dialog" id="confirmDialog">
+      <p>Supprimer tout l'historique ?</p>
+      <div class="confirm-dialog-buttons">
+        <button class="confirm-btn yes" id="confirmYes">Oui</button>
+        <button class="confirm-btn no" id="confirmNo">Non</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Récupération des éléments
+      const btn = document.getElementById('btnCalculer');
+      const btnTrash = document.getElementById('btnTrash');
+      const hexField = document.getElementById('hexField');
+      const decField = document.getElementById('decField');
+      const heureDep = document.getElementById('heureDep');
+      const heureArr = document.getElementById('heureArr');
+      const histoTbody = document.getElementById('histoTbody');
+      const emptyMessage = document.getElementById('emptyMessage');
+      const confirmDialog = document.getElementById('confirmDialog');
+      const overlay = document.getElementById('overlay');
+      const confirmYes = document.getElementById('confirmYes');
+      const confirmNo = document.getElementById('confirmNo');
+
+      // Fonction pour extraire les chiffres d'une chaîne hexadécimale (pour SS)
+      function calculSecondes(hexStr) {
+        const str = hexStr.slice(0, 6);
+        const chiffres = str.match(/[0-9]/g);
+        if (!chiffres) return 0;
+        return chiffres.reduce((acc, digit) => acc + parseInt(digit, 10), 0);
+      }
+
+      // Fonction pour calculer l'ajout aux minutes
+      function calculAjoutMinutes(decStr) {
+        const chiffresOnly = decStr.replace(/[^0-9]/g, '');
+        if (chiffresOnly.length === 0) return 0;
+        
+        const sixDerniers = chiffresOnly.slice(-6);
+        if (sixDerniers.length === 0) return 0;
+        
+        const premier = parseInt(sixDerniers.charAt(0), 10);
+        const dernier = parseInt(sixDerniers.charAt(sixDerniers.length - 1), 10);
+        
+        return premier + dernier;
+      }
+
+      function formatTwoDigits(n) {
+        return n.toString().padStart(2, '0');
+      }
+
+      function parseHeure(heureStr) {
+        const match = heureStr.match(/(\d{1,2}):(\d{1,2}):(\d{1,2})/);
+        if (!match) return { heures: 0, minutes: 0, secondes: 0 };
+        return {
+          heures: parseInt(match[1], 10) % 24,
+          minutes: parseInt(match[2], 10) % 60,
+          secondes: parseInt(match[3], 10) % 60
+        };
+      }
+
+      // Fonction principale de calcul
+      function calculerHeureArrivee() {
+        const hexValue = hexField.value.trim() || '';
+        const decValue = decField.value.trim() || '';
+        const departValue = heureDep.value.trim() || '00:00:00';
+
+        const depart = parseHeure(departValue);
+
+        // Calcul des secondes
+        let secondes = calculSecondes(hexValue);
+        secondes = Math.min(59, secondes % 60);
+
+        // Calcul de l'ajout aux minutes
+        const ajoutMinutes = calculAjoutMinutes(decValue);
+        
+        // Minutes finales
+        let minutesFinales = depart.minutes + ajoutMinutes;
+        let heuresFinales = depart.heures;
+        
+        if (minutesFinales >= 60) {
+          heuresFinales = (heuresFinales + Math.floor(minutesFinales / 60)) % 24;
+          minutesFinales = minutesFinales % 60;
+        }
+
+        const nouvelleHeureArr = `${formatTwoDigits(heuresFinales)}:${formatTwoDigits(minutesFinales)}:${formatTwoDigits(secondes)}`;
+        heureArr.value = nouvelleHeureArr;
+
+        return nouvelleHeureArr;
+      }
+
+      // Fonction pour ajouter une entrée dans l'historique (tableau)
+      function ajouterAHistorique(heureArrivee) {
+        // Cacher le message vide si visible
+        if (emptyMessage.style.display !== 'none') {
+          emptyMessage.style.display = 'none';
+        }
+
+        // Créer une nouvelle ligne
+        const newRow = document.createElement('tr');
+        const newCell = document.createElement('td');
+        newCell.textContent = heureArrivee;
+        newRow.appendChild(newCell);
+
+        // Ajouter en haut du tableau (ordre chronologique inverse = plus récent en haut)
+        if (histoTbody.firstChild) {
+          histoTbody.insertBefore(newRow, histoTbody.firstChild);
+        } else {
+          histoTbody.appendChild(newRow);
+        }
+      }
+
+      // Fonction pour vider l'historique
+      function viderHistorique() {
+        histoTbody.innerHTML = '';
+        emptyMessage.style.display = 'block';
+      }
+
+      // Afficher le dialog de confirmation
+      function showConfirmDialog() {
+        confirmDialog.style.display = 'block';
+        overlay.style.display = 'block';
+      }
+
+      // Cacher le dialog
+      function hideConfirmDialog() {
+        confirmDialog.style.display = 'none';
+        overlay.style.display = 'none';
+      }
+
+      // Événement du bouton Calculer
+      function effectuerCalcul() {
+        if (!hexField.value.trim() || !decField.value.trim()) {
+          alert('Veuillez remplir les champs Hex et Décimal');
+          return;
+        }
+
+        const heureArriveeCalculee = calculerHeureArrivee();
+        ajouterAHistorique(heureArriveeCalculee);
+      }
+
+      btn.addEventListener('click', effectuerCalcul);
+
+      // Entrée pour valider
+      [hexField, decField, heureDep].forEach(field => {
+        field.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            effectuerCalcul();
+          }
+        });
+      });
+
+      // Gestion de la poubelle
+      btnTrash.addEventListener('click', () => {
+        if (histoTbody.children.length > 0) {
+          showConfirmDialog();
+        }
+      });
+
+      confirmYes.addEventListener('click', () => {
+        viderHistorique();
+        hideConfirmDialog();
+      });
+
+      confirmNo.addEventListener('click', hideConfirmDialog);
+      overlay.addEventListener('click', hideConfirmDialog);
+
+      // Initialisation : un exemple au chargement
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          effectuerCalcul();
+        }, 500);
+      });
+    })();
+  </script>
+</body>
+</html>
