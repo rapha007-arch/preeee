@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOSS BET - PRÉDICTION TOOL</title>
+    <style>
+        /* FOMBA (STYLES) - Mitovy amin'ny tany am-boalohany */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0f0f1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Trebuchet MS', 'Arial Black', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700, #ffb347, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: #a0a0b0;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #1a1a2e 0%, #14141f 100%);
+            border: 1px solid #ffd966;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .gold-text {
+            color: #ffd966;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .menu-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700);
+            border: none;
+            border-radius: 16px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #0f0f1a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .menu-button.small {
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .menu-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .menu-description {
+            font-size: 0.85rem;
+            color: #a0a0b0;
+            padding-left: 0.5rem;
+        }
+
+        .section-bg {
+            background: #1e1e30;
+            border-radius: 16px;
+            padding: 1.25rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffd966;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.875rem;
+            background-color: #232338;
+            border: 1px solid #ffd966;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ffaa00;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: #232338;
+            border: 1px solid #ffd966;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .result-time {
+            font-size: 2.5rem;
+            font-family: monospace;
+            font-weight: bold;
+            color: #ffd966;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-multiplier {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .copy-button {
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: #2a2a40;
+            border: 1px solid #ffd966;
+            border-radius: 8px;
+            color: #ffd966;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .copy-button:hover {
+            background: #323250;
+        }
+
+        .footer {
+            text-align: center;
+            color: #5a5a70;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 0.75rem 1.25rem;
+            background: #1e1e30;
+            border: 1px solid #ffd966;
+            border-radius: 30px;
+            color: #a0a0b0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            background: #ffd966;
+            color: #0f0f1a;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: #ffd966;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🎰 BOSS BET</h1>
+            <div class="subtitle">vers l'infini ✈️ • prédiction tool</div>
+        </div>
+
+        <!-- BARRE D'ONGLETS (Navigation) -->
+        <div class="tab-container" id="tabContainer">
+            <div class="tab active" data-page="home">🏠 Accueil</div>
+            <div class="tab" data-page="bonboom">🟢 BonBoom</div>
+            <div class="tab" data-page="proboom">🚀 ProBoom</div>
+            <div class="tab" data-page="antirafale">🚨 Anti Rafale</div>
+            <div class="tab" data-page="graindegain">🛑✅ Grain de Gain</div>
+            <div class="tab" data-page="historique">📋 Historique</div>
+        </div>
+
+        <!-- PAGE D'ACCUEIL -->
+        <div id="homePage" class="page active-page">
+            <div class="card">
+                <div class="warning-box">
+                    ⚠️ L'aviator est un jeu des émotions, plus tu te concentres du gros multiplicateur, plus tu te l'éloigne.😓<br><br>
+                    <span style="color: white;">"Aleo mihinana Kely tsy mba resaka fa tsy izay tonga aloha no arabaina fa izay tonga soa" 😅🚨</span>
+                </div>
+
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <button class="menu-button" data-page="bonboom">
+                            <span>🟢</span> BonBoom — x3 assuré ✅🚀
+                        </button>
+                        <div class="menu-description">Viser x3 dans un tour standard (bleu et violet équilibré)</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <button class="menu-button" data-page="proboom">
+                            <span>🚀</span> ProBoom — x5 assuré ✅🚀
+                        </button>
+                        <div class="menu-description">Viser x5 quand les violet sont plus nombreux que le bleu</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <button class="menu-button" data-page="antirafale">
+                            <span>🚨</span> Anti Rafale — x2 💯🪄
+                        </button>
+                        <div class="menu-description">Viser x2 quand les bleus dominent</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <button class="menu-button" data-page="graindegain">
+                            <span>🛑✅</span> Grain de Gain — Risque varié 🪄
+                        </button>
+                        <div class="menu-description">Combinaison des 3 sections, peut viser le vert 🟩 +50x</div>
+                    </div>
+
+                    <div class="menu-item">
+                        <button class="menu-button small" data-page="historique">
+                            <span>📋</span> Historique des prédictions
+                        </button>
+                    </div>
+
+                    <div class="menu-item">
+                        <button class="menu-button small" id="guideButton">
+                            <span>📖</span> Mode d'emploi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE BONBOOM -->
+        <div id="bonboomPage" class="page">
+            <div class="card">
+                <h2 style="color: #ffd966; margin-bottom: 1rem; display: flex; gap: 0.5rem;">
+                    <span>🟢 BonBoom</span> <span style="color: white; font-size: 0.9rem;">x3 assuré</span>
+                </h2>
+                
+                <div class="section-bg">
+                    <div class="input-group">
+                        <label>🕐 Heure du tour (HH:MM)</label>
+                        <input type="text" id="bonboomHeure" placeholder="12:25" inputmode="numeric">
+                    </div>
+                    <div class="input-group">
+                        <label>🔢 Hex (2 chiffres)</label>
+                        <input type="text" id="bonboomHex" placeholder="24" inputmode="numeric" maxlength="2">
+                    </div>
+                    <div class="input-group">
+                        <label>🔢 Déc (2 chiffres)</label>
+                        <input type="text" id="bonboomDec" placeholder="36" inputmode="numeric" maxlength="2">
+                    </div>
+                    
+                    <div class="flex-row">
+                        <button class="menu-button" id="bonboomCalculer" style="padding: 0.875rem;">🎯 Prédire</button>
+                        <button class="copy-button" id="bonboomEffacer" style="flex: 0 0 auto;">🔄</button>
+                    </div>
+
+                    <div id="bonboomResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="bonboomTime">12:34:56</div>
+                        <div class="result-multiplier" id="bonboomMulti">x7.89</div>
+                        <button class="copy-button" id="bonboomCopy">📋 Copier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE PROBOOM -->
+        <div id="proboomPage" class="page">
+            <div class="card">
+                <h2 style="color: #ffd966; margin-bottom: 1rem; display: flex; gap: 0.5rem;">
+                    <span>🚀 ProBoom</span> <span style="color: white; font-size: 0.9rem;">x5+ assuré</span>
+                </h2>
+                
+                <div class="section-bg">
+                    <div class="input-group">
+                        <label>🕐 Heure du tour (HH:MM)</label>
+                        <input type="text" id="proboomHeure" placeholder="12:25">
+                    </div>
+                    <div class="input-group">
+                        <label>🔢 Hex (2 chiffres)</label>
+                        <input type="text" id="proboomHex" placeholder="24" maxlength="2">
+                    </div>
+                    <div class="input-group">
+                        <label>🔢 Déc (2 chiffres)</label>
+                        <input type="text" id="proboomDec" placeholder="36" maxlength="2">
+                    </div>
+                    
+                    <button class="menu-button" id="proboomCalculer" style="padding: 0.875rem;">🎯 Prédire Pro</button>
+
+                    <div id="proboomResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="proboomTime">12:34:56</div>
+                        <div class="result-multiplier" id="proboomMulti">x12.34</div>
+                        <button class="copy-button" id="proboomCopy">📋 Copier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE ANTI RAFALE -->
+        <div id="antirafalePage" class="page">
+            <div class="card">
+                <h2 style="color: #ffd966; margin-bottom: 1rem;">🚨 Anti Rafale</h2>
+                
+                <div class="section-bg">
+                    <div class="input-group">
+                        <label>🕐 Heure du début (HH:MM)</label>
+                        <input type="text" id="arHeure" placeholder="12:25">
+                    </div>
+                    <div class="input-group">
+                        <label>📊 Multiplicateur bleu (inférieur à 2x)</label>
+                        <input type="text" id="arMulti" placeholder="1.45">
+                    </div>
+                    <div class="input-group">
+                        <label>🔢 Déci 4 (4 derniers chiffres)</label>
+                        <input type="text" id="arDeci" placeholder="3842" maxlength="4">
+                    </div>
+                    
+                    <button class="menu-button" id="arCalculer" style="padding: 0.875rem;">🚀 Calcul Pragmatique</button>
+
+                    <div id="arResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="arTime">12:34:56</div>
+                        <div class="result-multiplier" id="arMultiResult">x2.34</div>
+                        <button class="copy-button" id="arCopy">📋 Copier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE GRAIN DE GAIN -->
+        <div id="graindegainPage" class="page">
+            <div class="card">
+                <h2 style="color: #ffd966; margin-bottom: 1rem;">🛑✅ GRAIN DE GAIN</h2>
+                
+                <div class="section-bg">
+                    <div class="input-group">
+                        <label>🕐 Heure du tour</label>
+                        <input type="text" id="grainHeure" placeholder="12:25">
+                    </div>
+                    <div class="input-group">
+                        <label>🌱 Graine de serveur (2 caractères)</label>
+                        <input type="text" id="grainServeur" placeholder="a4" maxlength="2">
+                    </div>
+                    <div class="input-group">
+                        <label>🎲 3 graines des joueurs (1 carac. chacun)</label>
+                        <div class="flex-row">
+                            <input type="text" id="grainJ1" placeholder="a" maxlength="1" style="flex:1;">
+                            <input type="text" id="grainJ2" placeholder="2" maxlength="1" style="flex:1;">
+                            <input type="text" id="grainJ3" placeholder="3" maxlength="1" style="flex:1;">
+                        </div>
+                    </div>
+                    
+                    <button class="menu-button" id="grainCalculer" style="padding: 0.875rem;">CALCUL GRAIN DE GAIN 🛑🚀</button>
+
+                    <div id="grainResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="grainTime">12:34:56</div>
+                        <div class="result-multiplier" id="grainMulti">x7.89</div>
+                        <button class="copy-button" id="grainCopy">📋 Copier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE HISTORIQUE -->
+        <div id="historiquePage" class="page">
+            <div class="card">
+                <h2 style="color: #ffd966; margin-bottom: 1rem;">📋 Historique</h2>
+                <p style="color: #a0a0b0; margin-bottom: 1rem;">Toutes vos prédictions sauvegardées</p>
+                
+                <div id="historiqueContent">
+                    <p style="color: #5a5a70; text-align: center; padding: 2rem;">Aucun historique pour le moment</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE GUIDE -->
+        <div id="guidePage" class="page">
+            <div class="card">
+                <h2 style="color: #ffd966; margin-bottom: 1rem;">📖 Mode d'emploi</h2>
+                
+                <div style="color: #a0a0b0; line-height: 1.6;">
+                    <p><span style="color:#ffd966;">1.</span> Saisissez l'heure exacte du tour au format HH:MM</p>
+                    <p><span style="color:#ffd966;">2.</span> Entrez les 2 chiffres hexadécimaux affichés</p>
+                    <p><span style="color:#ffd966;">3.</span> Entrez les 2 chiffres décimaux affichés</p>
+                    <p><span style="color:#ffd966;">4.</span> Appuyez sur "Prédire" pour obtenir le résultat</p>
+                    <p style="margin-top:1rem;">💡 <span style="color:#ffd966;">BonBoom</span> : prédiction standard + 1 minute</p>
+                    <p>💡 <span style="color:#ffd966;">ProBoom</span> : prédiction avancée + 2 min 15 sec</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span style="color: #ffd966;">BOSS BET</span> • outil de prédiction • version simplifiée
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // FONCTIONS DE CALCUL (KAJY) - vT, bT, CT
+        // ============================================
+        
+        // Fonction principale (BonBoom & ProBoom)
+        function vT(e, t, r, n = false) {
+            const s = e.split(":");
+            if (s.length !== 2) return null;
+            let i = parseInt(s[0], 10), o = parseInt(s[1], 10);
+            if (isNaN(i) || isNaN(o)) return null;
+
+            const a = parseInt(t[0], 10), l = parseInt(t[1], 10);
+            if (isNaN(a) || isNaN(l)) return null;
+
+            const u = Math.abs(a - l);
+            o += u;
+
+            const c = parseInt(r[0], 10), h = parseInt(r[1], 10);
+            if (isNaN(c) || isNaN(h)) return null;
+            let f = c * h;
+
+            if (n) { f += 15; o += 2; } else { o += 1; }
+
+            f -= 20;
+            if (f < 0) { f += 60; o -= 1; }
+            f += 67;
+            if (f > 59) { o += Math.floor(f / 60); f = f % 60; }
+            if (o < 0) { i -= 1; o += 60; }
+            if (o > 59) { i += Math.floor(o / 60); o = o % 60; }
+            i = (i % 24 + 24) % 24;
+
+            const w = a * 7 + l * 13 + c * 17 + h * 23 + i * 3 + o * 11 + f * 5;
+            let m;
+            if (n) {
+                const v = 10 + w % 40, _ = w * 7 % 100;
+                m = `x${v}.${_.toString().padStart(2, "0")}`;
+            } else {
+                const v = 5 + w % 10, _ = w * 13 % 100;
+                m = `x${v}.${_.toString().padStart(2, "0")}`;
+            }
+
+            const x = y => y.toString().padStart(2, "0");
+            return { time: `${x(i)}:${x(o)}:${x(f)}`, multiplier: m };
+        }
+
+        // Fonction Anti Rafale
+        function calculateAntiRafale(heure, multiplicateur, deci4) {
+            const s = heure.split(":");
+            let k = parseInt(s[0], 10), E = parseInt(s[1], 10);
+            if (isNaN(k) || isNaN(E)) return null;
+
+            const multiStr = multiplicateur.replace(/[^0-9.]/g, '');
+            const deciStr = deci4.replace(/\D/g, '');
+            if (deciStr.length !== 4) return null;
+
+            const T = parseInt(deciStr[0], 10), C = parseInt(deciStr[1], 10);
+            const R = parseInt(deciStr[2], 10), F = parseInt(deciStr[3], 10);
+            if ([T, C, R, F].some(isNaN)) return null;
+
+            E += T;
+            let I = Math.abs(C - R) * F;
+            I -= 20;
+            if (I < 0) { I += 60; E -= 1; }
+            I += 67;
+            if (I > 59) { E += Math.floor(I / 60); I = I % 60; }
+            if (I > 59) { E += Math.floor(I / 60); I = I % 60; }
+            if (E < 0) { k -= 1; E += 60; }
+            if (E > 59) { k += Math.floor(E / 60); E = E % 60; }
+            k = (k % 24 + 24) % 24;
+
+            const lastChar = multiStr.slice(-1);
+            const Q = parseInt(lastChar, 10);
+            const B = Q % 2 !== 0;
+            const V = B ? 2 : 3;
+            const P = B ? 4 : 5;
+
+            const j = T * 7 + C * 13 + R * 17 + F * 23 + k * 3 + E * 11 + I * 5 + Q * 19;
+            const $ = j * 13 % 100;
+            const targetMulti = `x${V + j % (P - V)}.${$.toString().padStart(2, "0")}`;
+
+            const q = ee => ee.toString().padStart(2, "0");
+            const time = `${q(k)}:${q(E)}:${q(I)}`;
+
+            return { time, targetMultiplier: targetMulti };
+        }
+
+        // Fonction Grain de Gain
+        function calculateGrain(heure, graineServeur, g1, g2, g3) {
+            const s = heure.split(":");
+            let R = parseInt(s[0], 10), F = parseInt(s[1], 10);
+            if (isNaN(R) || isNaN(F)) return null;
+
+            const charToVal = (c) => {
+                if (!c || c.length === 0) return 0;
+                const ch = c.toLowerCase();
+                if (ch >= '0' && ch <= '9') return parseInt(ch, 10);
+                return ch.charCodeAt(0) - 96; // a=1, b=2, ...
+            };
+
+            const I = charToVal(graineServeur[0] || '0');
+            const J = charToVal(graineServeur[1] || '0');
+            const L = charToVal(g1);
+            const Q = charToVal(g2);
+            const B = charToVal(g3);
+
+            let j = 145 + (I * 31 + J * 37 + L * 41 + Q * 43 + B * 47 + R * 53 + F * 59) % 194;
+            let $ = F * 60 + j;
+            $ -= 20;
+            $ += 67;
+
+            let z = Math.floor($ / 60);
+            let M = $ % 60;
+            if (M < 0) { M += 60; z -= 1; }
+            R += Math.floor(z / 60);
+            z = z % 60;
+            if (z < 0) { R -= 1; z += 60; }
+            R = (R % 24 + 24) % 24;
+
+            const q = I * 7 + J * 11 + L * 13 + Q * 17 + B * 19 + R * 23 + z * 29 + M * 31;
+            const xe = 3 + q % 12;
+            const ee = q * 17 % 100;
+            const multiplier = `x${xe}.${ee.toString().padStart(2, "0")}`;
+
+            const format = n => n.toString().padStart(2, "0");
+            return { time: `${format(R)}:${format(z)}:${format(M)}`, multiplier };
+        }
+
+        // ============================================
+        // GESTION DES PAGES ET INTERACTIONS
+        // ============================================
+        
+        // Navigation par onglets
+        const tabs = document.querySelectorAll('.tab');
+        const pages = document.querySelectorAll('.page');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const pageId = tab.dataset.page + 'Page';
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                pages.forEach(p => p.classList.remove('active-page'));
+                document.getElementById(pageId).classList.add('active-page');
+            });
+        });
+
+        // Boutons de la page d'accueil
+        document.querySelectorAll('[data-page]').forEach(btn => {
+            if (btn.id !== 'guideButton') {
+                btn.addEventListener('click', () => {
+                    const pageId = btn.dataset.page + 'Page';
+                    const targetTab = Array.from(tabs).find(t => t.dataset.page === btn.dataset.page);
+                    if (targetTab) targetTab.click();
+                });
+            }
+        });
+
+        // Bouton Guide
+        document.getElementById('guideButton').addEventListener('click', () => {
+            const targetTab = Array.from(tabs).find(t => t.dataset.page === 'guide');
+            if (targetTab) targetTab.click();
+        });
+
+        // ============================================
+        // BONBOOM
+        // ============================================
+        const bonboomHeure = document.getElementById('bonboomHeure');
+        const bonboomHex = document.getElementById('bonboomHex');
+        const bonboomDec = document.getElementById('bonboomDec');
+        const bonboomCalculer = document.getElementById('bonboomCalculer');
+        const bonboomEffacer = document.getElementById('bonboomEffacer');
+        const bonboomResult = document.getElementById('bonboomResult');
+        const bonboomTime = document.getElementById('bonboomTime');
+        const bonboomMulti = document.getElementById('bonboomMulti');
+        const bonboomCopy = document.getElementById('bonboomCopy');
+
+        // Auto-format heure (ajoute les ":")
+        bonboomHeure.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '').slice(0, 4);
+            if (val.length > 2) {
+                val = val.slice(0, 2) + ':' + val.slice(2);
+            }
+            e.target.value = val;
+        });
+
+        bonboomCalculer.addEventListener('click', () => {
+            const heure = bonboomHeure.value;
+            const hex = bonboomHex.value;
+            const dec = bonboomDec.value;
+            
+            if (heure.length === 5 && hex.length === 2 && dec.length === 2) {
+                const result = vT(heure, hex, dec, false);
+                if (result) {
+                    bonboomTime.textContent = result.time;
+                    bonboomMulti.textContent = result.multiplier;
+                    bonboomResult.style.display = 'block';
+                    
+                    // Sauvegarde dans l'historique
+                    saveToHistory('bonboom', { time: result.time, multiplier: result.multiplier });
+                }
+            } else {
+                alert('Veuillez remplir tous les champs correctement');
+            }
+        });
+
+        bonboomEffacer.addEventListener('click', () => {
+            bonboomHeure.value = '';
+            bonboomHex.value = '';
+            bonboomDec.value = '';
+            bonboomResult.style.display = 'none';
+        });
+
+        bonboomCopy.addEventListener('click', () => {
+            const text = `${bonboomTime.textContent} | ${bonboomMulti.textContent}`;
+            navigator.clipboard.writeText(text);
+            alert('Copié !');
+        });
+
+        // ============================================
+        // PROBOOM
+        // ============================================
+        const proboomHeure = document.getElementById('proboomHeure');
+        const proboomHex = document.getElementById('proboomHex');
+        const proboomDec = document.getElementById('proboomDec');
+        const proboomCalculer = document.getElementById('proboomCalculer');
+        const proboomResult = document.getElementById('proboomResult');
+        const proboomTime = document.getElementById('proboomTime');
+        const proboomMulti = document.getElementById('proboomMulti');
+        const proboomCopy = document.getElementById('proboomCopy');
+
+        proboomHeure.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '').slice(0, 4);
+            if (val.length > 2) {
+                val = val.slice(0, 2) + ':' + val.slice(2);
+            }
+            e.target.value = val;
+        });
+
+        proboomCalculer.addEventListener('click', () => {
+            const heure = proboomHeure.value;
+            const hex = proboomHex.value;
+            const dec = proboomDec.value;
+            
+            if (heure.length === 5 && hex.length === 2 && dec.length === 2) {
+                const result = vT(heure, hex, dec, true);
+                if (result) {
+                    proboomTime.textContent = result.time;
+                    proboomMulti.textContent = result.multiplier;
+                    proboomResult.style.display = 'block';
+                    saveToHistory('proboom', { time: result.time, multiplier: result.multiplier });
+                }
+            } else {
+                alert('Veuillez remplir tous les champs correctement');
+            }
+        });
+
+        proboomCopy.addEventListener('click', () => {
+            const text = `${proboomTime.textContent} | ${proboomMulti.textContent}`;
+            navigator.clipboard.writeText(text);
+            alert('Copié !');
+        });
+
+        // ============================================
+        // ANTI RAFALE
+        // ============================================
+        const arHeure = document.getElementById('arHeure');
+        const arMulti = document.getElementById('arMulti');
+        const arDeci = document.getElementById('arDeci');
+        const arCalculer = document.getElementById('arCalculer');
+        const arResult = document.getElementById('arResult');
+        const arTime = document.getElementById('arTime');
+        const arMultiResult = document.getElementById('arMultiResult');
+        const arCopy = document.getElementById('arCopy');
+
+        arHeure.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '').slice(0, 4);
+            if (val.length > 2) {
+                val = val.slice(0, 2) + ':' + val.slice(2);
+            }
+            e.target.value = val;
+        });
+
+        arMulti.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/[^0-9.]/g, '');
+            if ((val.match(/\./g) || []).length > 1) {
+                val = val.replace(/\.+$/, '');
+            }
+            e.target.value = val;
+        });
+
+        arDeci.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+        });
+
+        arCalculer.addEventListener('click', () => {
+            const heure = arHeure.value;
+            const multi = arMulti.value;
+            const deci = arDeci.value;
+            
+            if (heure.length === 5 && multi.length > 0 && deci.length === 4) {
+                const result = calculateAntiRafale(heure, multi, deci);
+                if (result) {
+                    arTime.textContent = result.time;
+                    arMultiResult.textContent = result.targetMultiplier;
+                    arResult.style.display = 'block';
+                    saveToHistory('antirafale', { 
+                        time: result.time, 
+                        targetMultiplier: result.targetMultiplier 
+                    });
+                }
+            } else {
+                alert('Veuillez remplir tous les champs correctement');
+            }
+        });
+
+        arCopy.addEventListener('click', () => {
+            const text = `${arTime.textContent} | ${arMultiResult.textContent}`;
+            navigator.clipboard.writeText(text);
+            alert('Copié !');
+        });
+
+        // ============================================
+        // GRAIN DE GAIN
+        // ============================================
+        const grainHeure = document.getElementById('grainHeure');
+        const grainServeur = document.getElementById('grainServeur');
+        const grainJ1 = document.getElementById('grainJ1');
+        const grainJ2 = document.getElementById('grainJ2');
+        const grainJ3 = document.getElementById('grainJ3');
+        const grainCalculer = document.getElementById('grainCalculer');
+        const grainResult = document.getElementById('grainResult');
+        const grainTime = document.getElementById('grainTime');
+        const grainMulti = document.getElementById('grainMulti');
+        const grainCopy = document.getElementById('grainCopy');
+
+        grainHeure.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '').slice(0, 4);
+            if (val.length > 2) {
+                val = val.slice(0, 2) + ':' + val.slice(2);
+            }
+            e.target.value = val;
+        });
+
+        grainServeur.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 2);
+        });
+
+        [grainJ1, grainJ2, grainJ3].forEach(input => {
+            input.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 1);
+            });
+        });
+
+        grainCalculer.addEventListener('click', () => {
+            const heure = grainHeure.value;
+            const serveur = grainServeur.value;
+            const j1 = grainJ1.value;
+            const j2 = grainJ2.value;
+            const j3 = grainJ3.value;
+            
+            if (heure.length === 5 && serveur.length === 2 && j1 && j2 && j3) {
+                const result = calculateGrain(heure, serveur, j1, j2, j3);
+                if (result) {
+                    grainTime.textContent = result.time;
+                    grainMulti.textContent = result.multiplier;
+                    grainResult.style.display = 'block';
+                    saveToHistory('graindegain', { 
+                        time: result.time, 
+                        multiplier: result.multiplier 
+                    });
+                }
+            } else {
+                alert('Veuillez remplir tous les champs correctement');
+            }
+        });
+
+        grainCopy.addEventListener('click', () => {
+            const text = `${grainTime.textContent} | ${grainMulti.textContent}`;
+            navigator.clipboard.writeText(text);
+            alert('Copié !');
+        });
+
+        // ============================================
+        // HISTORIQUE
+        // ============================================
+        function saveToHistory(type, data) {
+            const historyKey = `history-${type}`;
+            let history = JSON.parse(localStorage.getItem(historyKey) || '[]');
+            const entry = { id: Date.now(), ...data };
+            history = [entry, ...history].slice(0, 20);
+            localStorage.setItem(historyKey, JSON.stringify(history));
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            const historyContent = document.getElementById('historiqueContent');
+            const types = ['bonboom', 'proboom', 'antirafale', 'graindegain'];
+            const allEntries = [];
+            
+            types.forEach(type => {
+                const key = `history-${type}`;
+                const entries = JSON.parse(localStorage.getItem(key) || '[]');
+                entries.forEach(entry => {
+                    allEntries.push({
+                        ...entry,
+                        type: type === 'bonboom' ? '🟢 BonBoom' : 
+                              type === 'proboom' ? '🚀 ProBoom' :
+                              type === 'antirafale' ? '🚨 Anti Rafale' : '🛑 Grain de Gain',
+                        display: type === 'antirafale' ? entry.targetMultiplier : entry.multiplier
+                    });
+                });
+            });
+            
+            allEntries.sort((a, b) => b.id - a.id);
+            
+            if (allEntries.length === 0) {
+                historyContent.innerHTML = '<p style="color: #5a5a70; text-align: center; padding: 2rem;">Aucun historique pour le moment</p>';
+                return;
+            }
+            
+            let html = '<div style="max-height: 400px; overflow-y: auto; space-y: 0.5rem;">';
+            allEntries.slice(0, 30).forEach(entry => {
+                html += `
+                    <div style="background: #1e1e30; border: 1px solid #ffd966; border-radius: 8px; padding: 0.75rem; margin-bottom: 0.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #ffd966; font-weight: bold;">${entry.type}</span>
+                            <span style="color: white; font-family: monospace;">${entry.time}</span>
+                        </div>
+                        <div style="color: #a0a0b0; font-size: 0.9rem; margin-top: 0.25rem;">
+                            ${entry.display}
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            historyContent.innerHTML = html;
+        }
+
+        // Initialiser l'historique
+        updateHistoryDisplay();
+    </script>
+</body>
+</html>
