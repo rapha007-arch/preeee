@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="mg">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BOSS BET - PRÉDICTION TOOL</title>
+    <title>BOSS BET - Outil de Prédiction</title>
     <style>
-        /* FOMBA (STYLES) - Mitovy amin'ny tany am-boalohany */
+        /* STYLES GÉNÉRAUX */
         * {
             margin: 0;
             padding: 0;
@@ -240,7 +240,7 @@
         <!-- HEADER -->
         <div class="header">
             <h1>🎰 BOSS BET</h1>
-            <div class="subtitle">vers l'infini ✈️ • prédiction tool</div>
+            <div class="subtitle">vers l'infini ✈️ • outil de prédiction</div>
         </div>
 
         <!-- BARRE D'ONGLETS (Navigation) -->
@@ -251,51 +251,27 @@
             <div class="tab" data-page="antirafale">🚨 Anti Rafale</div>
             <div class="tab" data-page="graindegain">🛑✅ Grain de Gain</div>
             <div class="tab" data-page="historique">📋 Historique</div>
+            <div class="tab" data-page="guide">📖 Guide</div>
         </div>
 
-        <!-- PAGE D'ACCUEIL -->
+        <!-- PAGE D'ACCUEIL (Home) - Avec seulement Historique et Guide -->
         <div id="homePage" class="page active-page">
             <div class="card">
                 <div class="warning-box">
-                    ⚠️ L'aviator est un jeu des émotions, plus tu te concentres du gros multiplicateur, plus tu te l'éloigne.😓<br><br>
+                    ⚠️ L'aviator est un jeu d'émotions, plus tu te concentres sur le gros multiplicateur, plus tu t'en éloignes.😓<br><br>
                     <span style="color: white;">"Aleo mihinana Kely tsy mba resaka fa tsy izay tonga aloha no arabaina fa izay tonga soa" 😅🚨</span>
                 </div>
 
+                <!-- UNIQUEMENT Historique et Mode d'emploi - Les autres boutons ont été retirés -->
                 <div class="menu-grid">
-                    <div class="menu-item">
-                        <button class="menu-button" data-page="bonboom">
-                            <span>🟢</span> BonBoom — x3 assuré ✅🚀
-                        </button>
-                        <div class="menu-description">Viser x3 dans un tour standard (bleu et violet équilibré)</div>
-                    </div>
-
-                    <div class="menu-item">
-                        <button class="menu-button" data-page="proboom">
-                            <span>🚀</span> ProBoom — x5 assuré ✅🚀
-                        </button>
-                        <div class="menu-description">Viser x5 quand les violet sont plus nombreux que le bleu</div>
-                    </div>
-
-                    <div class="menu-item">
-                        <button class="menu-button" data-page="antirafale">
-                            <span>🚨</span> Anti Rafale — x2 💯🪄
-                        </button>
-                        <div class="menu-description">Viser x2 quand les bleus dominent</div>
-                    </div>
-
-                    <div class="menu-item">
-                        <button class="menu-button" data-page="graindegain">
-                            <span>🛑✅</span> Grain de Gain — Risque varié 🪄
-                        </button>
-                        <div class="menu-description">Combinaison des 3 sections, peut viser le vert 🟩 +50x</div>
-                    </div>
-
+                    <!-- Bouton Historique - Conservé -->
                     <div class="menu-item">
                         <button class="menu-button small" data-page="historique">
                             <span>📋</span> Historique des prédictions
                         </button>
                     </div>
 
+                    <!-- Bouton Mode d'emploi - Conservé -->
                     <div class="menu-item">
                         <button class="menu-button small" id="guideButton">
                             <span>📖</span> Mode d'emploi
@@ -328,7 +304,7 @@
                     
                     <div class="flex-row">
                         <button class="menu-button" id="bonboomCalculer" style="padding: 0.875rem;">🎯 Prédire</button>
-                        <button class="copy-button" id="bonboomEffacer" style="flex: 0 0 auto;">🔄</button>
+                        <button class="copy-button" id="bonboomEffacer" style="flex: 0 0 auto;">🔄 Effacer</button>
                     </div>
 
                     <div id="bonboomResult" class="result-box" style="display: none;">
@@ -413,11 +389,11 @@
                         <input type="text" id="grainHeure" placeholder="12:25">
                     </div>
                     <div class="input-group">
-                        <label>🌱 Graine de serveur (2 caractères)</label>
+                        <label>🌱 Graine du serveur (2 caractères)</label>
                         <input type="text" id="grainServeur" placeholder="a4" maxlength="2">
                     </div>
                     <div class="input-group">
-                        <label>🎲 3 graines des joueurs (1 carac. chacun)</label>
+                        <label>🎲 3 graines des joueurs (1 caractère chacun)</label>
                         <div class="flex-row">
                             <input type="text" id="grainJ1" placeholder="a" maxlength="1" style="flex:1;">
                             <input type="text" id="grainJ2" placeholder="2" maxlength="1" style="flex:1;">
@@ -460,18 +436,20 @@
                     <p><span style="color:#ffd966;">4.</span> Appuyez sur "Prédire" pour obtenir le résultat</p>
                     <p style="margin-top:1rem;">💡 <span style="color:#ffd966;">BonBoom</span> : prédiction standard + 1 minute</p>
                     <p>💡 <span style="color:#ffd966;">ProBoom</span> : prédiction avancée + 2 min 15 sec</p>
+                    <p>💡 <span style="color:#ffd966;">Anti Rafale</span> : zone sécurisée estimée</p>
+                    <p>💡 <span style="color:#ffd966;">Grain de Gain</span> : contrôle de mise</p>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <span style="color: #ffd966;">BOSS BET</span> • outil de prédiction • version simplifiée
+            <span style="color: #ffd966;">BOSS BET</span> • outil de prédiction • version française
         </div>
     </div>
 
     <script>
         // ============================================
-        // FONCTIONS DE CALCUL (KAJY) - vT, bT, CT
+        // FONCTIONS DE CALCUL
         // ============================================
         
         // Fonction principale (BonBoom & ProBoom)
@@ -617,7 +595,7 @@
             });
         });
 
-        // Boutons de la page d'accueil
+        // Boutons de la page d'accueil (Historique et Guide)
         document.querySelectorAll('[data-page]').forEach(btn => {
             if (btn.id !== 'guideButton') {
                 btn.addEventListener('click', () => {
@@ -891,7 +869,7 @@
                 return;
             }
             
-            let html = '<div style="max-height: 400px; overflow-y: auto; space-y: 0.5rem;">';
+            let html = '<div style="max-height: 400px; overflow-y: auto;">';
             allEntries.slice(0, 30).forEach(entry => {
                 html += `
                     <div style="background: #1e1e30; border: 1px solid #ffd966; border-radius: 8px; padding: 0.75rem; margin-bottom: 0.5rem;">
