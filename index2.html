@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🛩️🛩️</title>
+    <title>⚡ AVIATOR PRO • REAL MADRID ⚡</title>
     <style>
-        /* STYLES GÉNÉRAUX */
+        /* STYLES GÉNÉRAUX - THÈME REAL MADRID */
         * {
             margin: 0;
             padding: 0;
@@ -13,134 +13,197 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background-color: #0f0f1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a14 0%, #0f0f2a 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 1rem;
+            padding: 1.5rem 1rem;
+            color: #ffffff;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, #4a2c9c, #ffd700, transparent);
+            margin: 0.75rem auto 0;
+            border-radius: 3px;
         }
 
         h1 {
-            font-family: 'Trebuchet MS', 'Arial Black', sans-serif;
+            font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
             font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffd700, #ffb347, #ffd700);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f0e6 50%, #ffd700 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin-bottom: 0.25rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
         .subtitle {
-            color: #a0a0b0;
+            color: #a0a0c0;
             font-size: 1rem;
-            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(74, 44, 156, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid #ffd700;
+            border-radius: 30px;
+            padding: 0.25rem 1rem;
+            font-size: 0.8rem;
+            color: #ffd700;
+            margin-top: 0.5rem;
         }
 
         .card {
-            background: linear-gradient(145deg, #1a1a2e 0%, #14141f 100%);
-            border: 1px solid #ffd966;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            background: rgba(20, 20, 40, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 28px;
+            padding: 1.75rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 215, 0, 0.1) inset;
             margin-bottom: 1.5rem;
         }
 
-        .gold-text {
-            color: #ffd966;
-        }
-
-        .menu-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .menu-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .menu-button {
-            width: 100%;
-            padding: 1.25rem;
-            background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700);
-            border: none;
-            border-radius: 16px;
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #0f0f1a;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
+        .card-header {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+            margin-bottom: 1.5rem;
         }
 
-        .menu-button.small {
-            padding: 1rem;
-            font-size: 1.1rem;
+        .card-header h2 {
+            color: #ffffff;
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
-        .menu-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        .card-header span {
+            font-size: 1.8rem;
         }
 
-        .menu-description {
-            font-size: 0.85rem;
-            color: #a0a0b0;
-            padding-left: 0.5rem;
+        .gold-text {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: rgba(10, 10, 25, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .tab {
+            padding: 0.7rem 1.25rem;
+            background: transparent;
+            border: none;
+            border-radius: 30px;
+            color: #a0a0c0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            color: #ffffff;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #ffd700, #ffb800);
+            color: #0a0a14;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page.active-page {
+            display: block;
         }
 
         .section-bg {
-            background: #1e1e30;
-            border-radius: 16px;
-            padding: 1.25rem;
+            background: rgba(30, 30, 50, 0.5);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.15);
         }
 
         .input-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         label {
             display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #ffd966;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #b0b0d0;
             margin-bottom: 0.5rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
         }
 
         input {
             width: 100%;
-            padding: 0.875rem;
-            background-color: #232338;
-            border: 1px solid #ffd966;
-            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 15, 30, 0.7);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 18px;
             font-size: 1rem;
             color: #ffffff;
+            transition: all 0.2s ease;
+            font-family: 'Inter', monospace;
         }
 
         input:focus {
             outline: none;
-            border-color: #ffaa00;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+            background: rgba(20, 20, 40, 0.9);
+        }
+
+        input::placeholder {
+            color: #5a5a80;
+            font-size: 0.9rem;
         }
 
         .flex-row {
@@ -149,267 +212,360 @@
             align-items: center;
         }
 
-        .result-box {
-            margin-top: 1.5rem;
-            padding: 1.25rem;
-            background: #232338;
-            border: 1px solid #ffd966;
-            border-radius: 16px;
-            text-align: center;
+        .menu-button {
+            width: 100%;
+            padding: 1.1rem 1.5rem;
+            background: linear-gradient(135deg, #ffd700, #e5b800);
+            border: none;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0a0a14;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .result-time {
-            font-size: 2.5rem;
-            font-family: monospace;
-            font-weight: bold;
-            color: #ffd966;
-            margin-bottom: 0.5rem;
+        .menu-button.small {
+            padding: 0.9rem 1.25rem;
+            font-size: 1rem;
         }
 
-        .result-multiplier {
-            font-size: 1.5rem;
-            color: white;
+        .menu-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, #ffde33, #ffc800);
+        }
+
+        .menu-button:active {
+            transform: translateY(0);
         }
 
         .copy-button {
-            margin-top: 0.75rem;
-            padding: 0.5rem 1rem;
-            background: #2a2a40;
-            border: 1px solid #ffd966;
-            border-radius: 8px;
-            color: #ffd966;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #ffd700;
+            border-radius: 14px;
+            color: #ffd700;
             cursor: pointer;
             font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(5px);
         }
 
         .copy-button:hover {
-            background: #323250;
+            background: #ffd700;
+            color: #0a0a14;
+        }
+
+        .result-box {
+            margin-top: 1.75rem;
+            padding: 1.75rem;
+            background: rgba(30, 30, 55, 0.7);
+            backdrop-filter: blur(5px);
+            border: 1px solid #ffd700;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
+        }
+
+        .result-time {
+            font-size: 3rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .result-multiplier {
+            font-size: 1.75rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: #8a8ab0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer {
             text-align: center;
-            color: #5a5a70;
-            font-size: 0.8rem;
+            color: #4a4a70;
+            font-size: 0.75rem;
             margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.15);
         }
 
-        .tab-container {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tab {
-            padding: 0.75rem 1.25rem;
-            background: #1e1e30;
-            border: 1px solid #ffd966;
-            border-radius: 30px;
-            color: #a0a0b0;
-            cursor: pointer;
+        .footer span {
+            color: #ffd700;
             font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .tab.active {
-            background: #ffd966;
-            color: #0f0f1a;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active-page {
-            display: block;
         }
 
         .warning-box {
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 4px solid #ffc107;
-            padding: 1rem;
-            border-radius: 8px;
+            background: linear-gradient(145deg, rgba(74, 44, 156, 0.3), rgba(20, 20, 50, 0.5));
+            border-left: 4px solid #ffd700;
+            padding: 1.25rem;
+            border-radius: 18px;
             margin-bottom: 1.5rem;
-            color: #ffd966;
-            font-style: italic;
+            color: #e0e0ff;
+            font-style: normal;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .badge-rm {
+            background: #4a2c9c;
+            color: #ffd700;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        /* Historique styling */
+        .history-entry {
+            background: rgba(30, 30, 55, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+        }
+
+        .history-entry:hover {
+            border-color: #ffd700;
+            background: rgba(40, 40, 70, 0.6);
+        }
+
+        .history-type {
+            color: #ffd700;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .history-time {
+            color: white;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .history-value {
+            color: #b0b0ff;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(20, 20, 40, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 10px;
         }
     </style>
+    <!-- Import Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
+        <!-- HEADER REAL MADRID -->
         <div class="header">
-            <h1>🏆HalaMadrid🏆</h1>
-            <div class="subtitle" Un jour,ce sera toi le boss </div>
+            <h1>⚡RM AVIATOR⚡</h1>
+            <div class="subtitle">Hala Madrid • Prédiction Pro</div>
+            <div class="badge">#Vamos</div>
         </div>
 
-        <!-- BARRE D'ONGLETS (Navigation) -->
+        <!-- BARRE D'ONGLETS (Navigation simplifiée) -->
         <div class="tab-container" id="tabContainer">
             <div class="tab active" data-page="home">🏠 Accueil</div>
-            <div class="tab" data-page="bonboom">🟢 BonBoom</div>
-            <div class="tab" data-page="proboom">🚀 ProBoom</div>
-            <div class="tab" data-page="antirafale">🚨 Anti Rafale</div>
-            <div class="tab" data-page="graindegain">🛑✅ Grain de Gain</div>
+            <div class="tab" data-page="decollage">🛫 Flash</div>
+            <div class="tab" data-page="supersonique">✈️ Supersonic</div>
+            <div class="tab" data-page="turbo">⚡ Turbo</div>
+            <div class="tab" data-page="moisson">🌾 Moisson</div>
             <div class="tab" data-page="historique">📋 Historique</div>
-            <div class="tab" data-page="guide">📖 Guide</div>
         </div>
 
-        <!-- PAGE D'ACCUEIL (Home) - Avec seulement Historique et Guide -->
+        <!-- PAGE D'ACCUEIL (Historique uniquement) -->
         <div id="homePage" class="page active-page">
             <div class="card">
                 <div class="warning-box">
-                    ⚠️Auto X3 maximum ilay ambony,ny ambany izay tinao hialana tsy blème, 
-                    rehefa avance dia tsara raha miandry tour 1 ho tapitra na maka vaovao mihitsy, 
-                    rehefa misy vert après préd dia afaka miditra na miandry kely fa mety ho rose après an'iny,zay fa bon gain mes loulous 💋<br><br>
-                    <span style="color: white;">"Tsy mise-nao rehetra no atao fa zarao,tandremo sao mnmn dia hifanome tsiny,
-                    tsy force-na manko ianao hividy na hampiasa ry kidijenty elah mon fils</span>
+                    <span style="color:#ffd700; font-weight:700;">⚽ REAL MADRID PROTOCOL ⚽</span><br>
+                    ⚠️ Auto X3 max en haut, en bas selon préférence. Après prédiction verte, entrée possible ou attente (rose possible). Bon gain !<br><br>
+                    <span style="color: #b0b0ff;">"Tout partager, rester unis. Hala Madrid!"</span>
                 </div>
 
-                <!-- UNIQUEMENT Historique et Mode d'emploi - Les autres boutons ont été retirés -->
+                <!-- Bouton Historique uniquement -->
                 <div class="menu-grid">
-                    <!-- Bouton Historique - Conservé -->
                     <div class="menu-item">
                         <button class="menu-button small" data-page="historique">
                             <span>📋</span> Historique des prédictions
                         </button>
                     </div>
-
-                    <!-- Bouton Mode d'emploi - Conservé -->
-                    <div class="menu-item">
-                        <button class="menu-button small" id="guideButton">
-                            <span>📖</span> Mode d'emploi
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE BONBOOM -->
-        <div id="bonboomPage" class="page">
+        <!-- PAGE DÉCOLLAGE FLASH -->
+        <div id="decollagePage" class="page">
             <div class="card">
-                <h2 style="color: #ffd966; margin-bottom: 1rem; display: flex; gap: 0.5rem;">
-                    <span>🙌</span> <span style="color: white; font-size: 0.9rem;">x3 assuré</span>
-                </h2>
+                <div class="card-header">
+                    <span>🛫</span>
+                    <h2>Décollage Flash <span class="gold-text">x3+</span></h2>
+                </div>
                 
                 <div class="section-bg">
                     <div class="input-group">
-                        <label>🕐 Heure du tour (HH:MM)</label>
-                        <input type="text" id="bonboomHeure" placeholder="12:25" inputmode="numeric">
+                        <label>🕐 Heure (HH:MM)</label>
+                        <input type="text" id="decollageHeure" placeholder="12:25" inputmode="numeric">
                     </div>
                     <div class="input-group">
                         <label>🔢 Hex (2 chiffres)</label>
-                        <input type="text" id="bonboomHex" placeholder="24" inputmode="numeric" maxlength="2">
+                        <input type="text" id="decollageHex" placeholder="24" inputmode="numeric" maxlength="2">
                     </div>
                     <div class="input-group">
                         <label>🔢 Déc (2 chiffres)</label>
-                        <input type="text" id="bonboomDec" placeholder="36" inputmode="numeric" maxlength="2">
+                        <input type="text" id="decollageDec" placeholder="36" inputmode="numeric" maxlength="2">
                     </div>
                     
                     <div class="flex-row">
-                        <button class="menu-button" id="bonboomCalculer" style="padding: 0.875rem;">calculer</button>
-                        <button class="copy-button" id="bonboomEffacer" style="flex: 0 0 auto;">🧹 Effacer</button>
+                        <button class="menu-button" id="decollageCalculer" style="padding: 1rem;">Calculer</button>
+                        <button class="copy-button" id="decollageEffacer">Effacer</button>
                     </div>
 
-                    <div id="bonboomResult" class="result-box" style="display: none;">
-                        <div class="result-time" id="bonboomTime">12:34:56</div>
-                        <div class="result-multiplier" id="bonboomMulti">x7.89</div>
-                        <button class="copy-button" id="bonboomCopy">⚠️</button>
+                    <div id="decollageResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="decollageTime">12:34:56</div>
+                        <div class="result-multiplier" id="decollageMulti">x7.89</div>
+                        <div class="result-label">Multiplicateur prédit</div>
+                        <button class="copy-button" id="decollageCopy" style="margin-top: 1rem;">Copier</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE PROBOOM -->
-        <div id="proboomPage" class="page">
+        <!-- PAGE SUPERSONIQUE -->
+        <div id="supersoniquePage" class="page">
             <div class="card">
-                <h2 style="color: #ffd966; margin-bottom: 1rem; display: flex; gap: 0.5rem;">
-                    <span>🚀</span> <span style="color: white; font-size: 0.9rem;">x5+ assuré</span>
-                </h2>
+                <div class="card-header">
+                    <span>✈️</span>
+                    <h2>Supersonique <span class="gold-text">x5+</span></h2>
+                </div>
                 
                 <div class="section-bg">
                     <div class="input-group">
-                        <label>🕐 Heure du tour (HH:MM)</label>
-                        <input type="text" id="proboomHeure" placeholder="12:25">
+                        <label>🕐 Heure (HH:MM)</label>
+                        <input type="text" id="supersoniqueHeure" placeholder="12:25">
                     </div>
                     <div class="input-group">
                         <label>🔢 Hex (2 chiffres)</label>
-                        <input type="text" id="proboomHex" placeholder="24" maxlength="2">
+                        <input type="text" id="supersoniqueHex" placeholder="24" maxlength="2">
                     </div>
                     <div class="input-group">
                         <label>🔢 Déc (2 chiffres)</label>
-                        <input type="text" id="proboomDec" placeholder="36" maxlength="2">
+                        <input type="text" id="supersoniqueDec" placeholder="36" maxlength="2">
                     </div>
                     
-                    <button class="menu-button" id="proboomCalculer" style="padding: 0.875rem;">calculer</button>
+                    <button class="menu-button" id="supersoniqueCalculer">Calculer</button>
 
-                    <div id="proboomResult" class="result-box" style="display: none;">
-                        <div class="result-time" id="proboomTime">12:34:56</div>
-                        <div class="result-multiplier" id="proboomMulti">x12.34</div>
-                        <button class="copy-button" id="proboomCopy">⚠️</button>
+                    <div id="supersoniqueResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="supersoniqueTime">12:34:56</div>
+                        <div class="result-multiplier" id="supersoniqueMulti">x12.34</div>
+                        <div class="result-label">Multiplicateur prédit</div>
+                        <button class="copy-button" id="supersoniqueCopy" style="margin-top: 1rem;">Copier</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE ANTI RAFALE -->
-        <div id="antirafalePage" class="page">
+        <!-- PAGE TURBO -->
+        <div id="turboPage" class="page">
             <div class="card">
-                <h2 style="color: #ffd966; margin-bottom: 1rem;">🚨 </h2>
+                <div class="card-header">
+                    <span>⚡</span>
+                    <h2>Turbo <span class="gold-text">Précision</span></h2>
+                </div>
                 
                 <div class="section-bg">
                     <div class="input-group">
-                        <label>🕐 Heure du début (HH:MM)</label>
-                        <input type="text" id="arHeure" placeholder="12:25">
+                        <label>🕐 Heure début (HH:MM)</label>
+                        <input type="text" id="turboHeure" placeholder="12:25">
                     </div>
                     <div class="input-group">
-                        <label>📊 Multiplicateur bleu (inférieur à 2x)</label>
-                        <input type="text" id="arMulti" placeholder="1.45">
+                        <label>📊 Multiplicateur bleu</label>
+                        <input type="text" id="turboMulti" placeholder="1.45">
                     </div>
                     <div class="input-group">
-                        <label>🔢 Déci 4 (4 derniers chiffres)</label>
-                        <input type="text" id="arDeci" placeholder="3842" maxlength="4">
+                        <label>🔢 4 derniers chiffres</label>
+                        <input type="text" id="turboDeci" placeholder="3842" maxlength="4">
                     </div>
                     
-                    <button class="menu-button" id="arCalculer" style="padding: 0.875rem;">Calculer</button>
+                    <button class="menu-button" id="turboCalculer">Calculer</button>
 
-                    <div id="arResult" class="result-box" style="display: none;">
-                        <div class="result-time" id="arTime">12:34:56</div>
-                        <div class="result-multiplier" id="arMultiResult">x2.34</div>
-                        <button class="copy-button" id="arCopy">📋</button>
+                    <div id="turboResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="turboTime">12:34:56</div>
+                        <div class="result-multiplier" id="turboMultiResult">x2.34</div>
+                        <div class="result-label">Zone sécurisée</div>
+                        <button class="copy-button" id="turboCopy" style="margin-top: 1rem;">Copier</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PAGE GRAIN DE GAIN -->
-        <div id="graindegainPage" class="page">
+        <!-- PAGE MOISSON DORÉE -->
+        <div id="moissonPage" class="page">
             <div class="card">
-                <h2 style="color: #ffd966; margin-bottom: 1rem;">💰</h2>
+                <div class="card-header">
+                    <span>🌾</span>
+                    <h2>Moisson Dorée</h2>
+                </div>
                 
                 <div class="section-bg">
                     <div class="input-group">
                         <label>🕐 Heure du tour</label>
-                        <input type="text" id="grainHeure" placeholder="12:25">
+                        <input type="text" id="moissonHeure" placeholder="12:25">
                     </div>
                     <div class="input-group">
-                        <label>🌱 Graine du serveur (2 caractères)</label>
-                        <input type="text" id="grainServeur" placeholder="a4" maxlength="2">
+                        <label>🌱 Semence serveur (2 car.)</label>
+                        <input type="text" id="moissonServeur" placeholder="a4" maxlength="2">
                     </div>
                     <div class="input-group">
-                        <label>🎲 3 graines des joueurs (1 caractère chacun)</label>
+                        <label>🎲 3 semences joueurs</label>
                         <div class="flex-row">
-                            <input type="text" id="grainJ1" placeholder="a" maxlength="1" style="flex:1;">
-                            <input type="text" id="grainJ2" placeholder="2" maxlength="1" style="flex:1;">
-                            <input type="text" id="grainJ3" placeholder="3" maxlength="1" style="flex:1;">
+                            <input type="text" id="moissonJ1" placeholder="a" maxlength="1">
+                            <input type="text" id="moissonJ2" placeholder="2" maxlength="1">
+                            <input type="text" id="moissonJ3" placeholder="3" maxlength="1">
                         </div>
                     </div>
                     
-                    <button class="menu-button" id="grainCalculer" style="padding: 0.875rem;"calculer</button>
+                    <button class="menu-button" id="moissonCalculer">Calculer</button>
 
-                    <div id="grainResult" class="result-box" style="display: none;">
-                        <div class="result-time" id="grainTime">12:34:56</div>
-                        <div class="result-multiplier" id="grainMulti">x7.89</div>
-                        <button class="copy-button" id="grainCopy">📋</button>
+                    <div id="moissonResult" class="result-box" style="display: none;">
+                        <div class="result-time" id="moissonTime">12:34:56</div>
+                        <div class="result-multiplier" id="moissonMulti">x7.89</div>
+                        <div class="result-label">Multiplicateur</div>
+                        <button class="copy-button" id="moissonCopy" style="margin-top: 1rem;">Copier</button>
                     </div>
                 </div>
             </div>
@@ -418,44 +574,28 @@
         <!-- PAGE HISTORIQUE -->
         <div id="historiquePage" class="page">
             <div class="card">
-                <h2 style="color: #ffd966; margin-bottom: 1rem;">📋 Historique</h2>
-                <p style="color: #a0a0b0; margin-bottom: 1rem;">Toutes vos prédictions sauvegardées</p>
-                
-                <div id="historiqueContent">
-                    <p style="color: #5a5a70; text-align: center; padding: 2rem;">Aucun historique pour le moment</p>
+                <div class="card-header">
+                    <span>📋</span>
+                    <h2>Historique</h2>
                 </div>
-            </div>
-        </div>
-
-        <!-- PAGE GUIDE -->
-        <div id="guidePage" class="page">
-            <div class="card">
-                <h2 style="color: #ffd966; margin-bottom: 1rem;">📖 Mode d'emploi</h2>
+                <p style="color: #a0a0c0; margin-bottom: 1.5rem;">30 dernières prédictions</p>
                 
-                <div style="color: #a0a0b0; line-height: 1.6;">
-                    <p><span style="color:#ffd966;">1.</span> Saisissez l'heure exacte du tour au format HH:MM</p>
-                    <p><span style="color:#ffd966;">2.</span> Entrez les 2 chiffres hexadécimaux affichés</p>
-                    <p><span style="color:#ffd966;">3.</span> Entrez les 2 chiffres décimaux affichés</p>
-                    <p><span style="color:#ffd966;">4.</span> Appuyez sur "Prédire" pour obtenir le résultat</p>
-                    <p style="margin-top:1rem;">💡 <span style="color:#ffd966;">BonBoom</span> : prédiction standard + 1 minute</p>
-                    <p>💡 <span style="color:#ffd966;">ProBoom</span> : prédiction avancée + 2 min 15 sec</p>
-                    <p>💡 <span style="color:#ffd966;">Anti Rafale</span> : zone sécurisée estimée</p>
-                    <p>💡 <span style="color:#ffd966;">Grain de Gain</span> : contrôle de mise</p>
+                <div id="historiqueContent" style="max-height: 450px; overflow-y: auto; padding-right: 0.5rem;">
+                    <p style="color: #5a5a80; text-align: center; padding: 2rem;">Aucun historique</p>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <span style="color: #ffd966;">BOSS BET</span> • outil de prédiction • version française
+            <span>⚡ HALA MADRID ⚡</span> • outil de prédiction pro • v2.0
         </div>
     </div>
 
     <script>
         // ============================================
-        // FONCTIONS DE CALCUL
+        // FONCTIONS DE CALCUL (inchangées)
         // ============================================
         
-        // Fonction principale (BonBoom & ProBoom)
         function vT(e, t, r, n = false) {
             const s = e.split(":");
             if (s.length !== 2) return null;
@@ -496,8 +636,7 @@
             return { time: `${x(i)}:${x(o)}:${x(f)}`, multiplier: m };
         }
 
-        // Fonction Anti Rafale
-        function calculateAntiRafale(heure, multiplicateur, deci4) {
+        function calculateTurbo(heure, multiplicateur, deci4) {
             const s = heure.split(":");
             let k = parseInt(s[0], 10), E = parseInt(s[1], 10);
             if (isNaN(k) || isNaN(E)) return null;
@@ -537,8 +676,7 @@
             return { time, targetMultiplier: targetMulti };
         }
 
-        // Fonction Grain de Gain
-        function calculateGrain(heure, graineServeur, g1, g2, g3) {
+        function calculateMoisson(heure, semenceServeur, s1, s2, s3) {
             const s = heure.split(":");
             let R = parseInt(s[0], 10), F = parseInt(s[1], 10);
             if (isNaN(R) || isNaN(F)) return null;
@@ -547,14 +685,14 @@
                 if (!c || c.length === 0) return 0;
                 const ch = c.toLowerCase();
                 if (ch >= '0' && ch <= '9') return parseInt(ch, 10);
-                return ch.charCodeAt(0) - 96; // a=1, b=2, ...
+                return ch.charCodeAt(0) - 96;
             };
 
-            const I = charToVal(graineServeur[0] || '0');
-            const J = charToVal(graineServeur[1] || '0');
-            const L = charToVal(g1);
-            const Q = charToVal(g2);
-            const B = charToVal(g3);
+            const I = charToVal(semenceServeur[0] || '0');
+            const J = charToVal(semenceServeur[1] || '0');
+            const L = charToVal(s1);
+            const Q = charToVal(s2);
+            const B = charToVal(s3);
 
             let j = 145 + (I * 31 + J * 37 + L * 41 + Q * 43 + B * 47 + R * 53 + F * 59) % 194;
             let $ = F * 60 + j;
@@ -579,10 +717,9 @@
         }
 
         // ============================================
-        // GESTION DES PAGES ET INTERACTIONS
+        // GESTION DES PAGES
         // ============================================
         
-        // Navigation par onglets
         const tabs = document.querySelectorAll('.tab');
         const pages = document.querySelectorAll('.page');
         
@@ -594,244 +731,204 @@
                 tab.classList.add('active');
                 
                 pages.forEach(p => p.classList.remove('active-page'));
-                document.getElementById(pageId).classList.add('active-page');
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) targetPage.classList.add('active-page');
             });
         });
 
-        // Boutons de la page d'accueil (Historique et Guide)
+        // Boutons data-page
         document.querySelectorAll('[data-page]').forEach(btn => {
-            if (btn.id !== 'guideButton') {
-                btn.addEventListener('click', () => {
-                    const pageId = btn.dataset.page + 'Page';
-                    const targetTab = Array.from(tabs).find(t => t.dataset.page === btn.dataset.page);
-                    if (targetTab) targetTab.click();
-                });
-            }
-        });
-
-        // Bouton Guide
-        document.getElementById('guideButton').addEventListener('click', () => {
-            const targetTab = Array.from(tabs).find(t => t.dataset.page === 'guide');
-            if (targetTab) targetTab.click();
+            btn.addEventListener('click', () => {
+                const pageId = btn.dataset.page + 'Page';
+                const targetTab = Array.from(tabs).find(t => t.dataset.page === btn.dataset.page);
+                if (targetTab) targetTab.click();
+            });
         });
 
         // ============================================
-        // BONBOOM
+        // DÉCOLLAGE FLASH
         // ============================================
-        const bonboomHeure = document.getElementById('bonboomHeure');
-        const bonboomHex = document.getElementById('bonboomHex');
-        const bonboomDec = document.getElementById('bonboomDec');
-        const bonboomCalculer = document.getElementById('bonboomCalculer');
-        const bonboomEffacer = document.getElementById('bonboomEffacer');
-        const bonboomResult = document.getElementById('bonboomResult');
-        const bonboomTime = document.getElementById('bonboomTime');
-        const bonboomMulti = document.getElementById('bonboomMulti');
-        const bonboomCopy = document.getElementById('bonboomCopy');
+        const decollageHeure = document.getElementById('decollageHeure');
+        const decollageHex = document.getElementById('decollageHex');
+        const decollageDec = document.getElementById('decollageDec');
+        const decollageCalculer = document.getElementById('decollageCalculer');
+        const decollageEffacer = document.getElementById('decollageEffacer');
+        const decollageResult = document.getElementById('decollageResult');
+        const decollageTime = document.getElementById('decollageTime');
+        const decollageMulti = document.getElementById('decollageMulti');
+        const decollageCopy = document.getElementById('decollageCopy');
 
-        // Auto-format heure (ajoute les ":")
-        bonboomHeure.addEventListener('input', (e) => {
+        decollageHeure.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '').slice(0, 4);
-            if (val.length > 2) {
-                val = val.slice(0, 2) + ':' + val.slice(2);
-            }
+            if (val.length > 2) val = val.slice(0, 2) + ':' + val.slice(2);
             e.target.value = val;
         });
 
-        bonboomCalculer.addEventListener('click', () => {
-            const heure = bonboomHeure.value;
-            const hex = bonboomHex.value;
-            const dec = bonboomDec.value;
+        decollageCalculer.addEventListener('click', () => {
+            const heure = decollageHeure.value;
+            const hex = decollageHex.value;
+            const dec = decollageDec.value;
             
             if (heure.length === 5 && hex.length === 2 && dec.length === 2) {
                 const result = vT(heure, hex, dec, false);
                 if (result) {
-                    bonboomTime.textContent = result.time;
-                    bonboomMulti.textContent = result.multiplier;
-                    bonboomResult.style.display = 'block';
-                    
-                    // Sauvegarde dans l'historique
-                    saveToHistory('bonboom', { time: result.time, multiplier: result.multiplier });
+                    decollageTime.textContent = result.time;
+                    decollageMulti.textContent = result.multiplier;
+                    decollageResult.style.display = 'block';
+                    saveToHistory('decollage', { time: result.time, multiplier: result.multiplier });
                 }
-            } else {
-                alert('Veuillez remplir tous les champs correctement');
-            }
+            } else alert('Veuillez remplir tous les champs');
         });
 
-        bonboomEffacer.addEventListener('click', () => {
-            bonboomHeure.value = '';
-            bonboomHex.value = '';
-            bonboomDec.value = '';
-            bonboomResult.style.display = 'none';
+        decollageEffacer.addEventListener('click', () => {
+            decollageHeure.value = decollageHex.value = decollageDec.value = '';
+            decollageResult.style.display = 'none';
         });
 
-        bonboomCopy.addEventListener('click', () => {
-            const text = `${bonboomTime.textContent} | ${bonboomMulti.textContent}`;
-            navigator.clipboard.writeText(text);
-            alert('Copié !');
+        decollageCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(`${decollageTime.textContent} | ${decollageMulti.textContent}`);
+            alert('Copié ✓');
         });
 
         // ============================================
-        // PROBOOM
+        // SUPERSONIQUE
         // ============================================
-        const proboomHeure = document.getElementById('proboomHeure');
-        const proboomHex = document.getElementById('proboomHex');
-        const proboomDec = document.getElementById('proboomDec');
-        const proboomCalculer = document.getElementById('proboomCalculer');
-        const proboomResult = document.getElementById('proboomResult');
-        const proboomTime = document.getElementById('proboomTime');
-        const proboomMulti = document.getElementById('proboomMulti');
-        const proboomCopy = document.getElementById('proboomCopy');
+        const supersoniqueHeure = document.getElementById('supersoniqueHeure');
+        const supersoniqueHex = document.getElementById('supersoniqueHex');
+        const supersoniqueDec = document.getElementById('supersoniqueDec');
+        const supersoniqueCalculer = document.getElementById('supersoniqueCalculer');
+        const supersoniqueResult = document.getElementById('supersoniqueResult');
+        const supersoniqueTime = document.getElementById('supersoniqueTime');
+        const supersoniqueMulti = document.getElementById('supersoniqueMulti');
+        const supersoniqueCopy = document.getElementById('supersoniqueCopy');
 
-        proboomHeure.addEventListener('input', (e) => {
+        supersoniqueHeure.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '').slice(0, 4);
-            if (val.length > 2) {
-                val = val.slice(0, 2) + ':' + val.slice(2);
-            }
+            if (val.length > 2) val = val.slice(0, 2) + ':' + val.slice(2);
             e.target.value = val;
         });
 
-        proboomCalculer.addEventListener('click', () => {
-            const heure = proboomHeure.value;
-            const hex = proboomHex.value;
-            const dec = proboomDec.value;
+        supersoniqueCalculer.addEventListener('click', () => {
+            const heure = supersoniqueHeure.value;
+            const hex = supersoniqueHex.value;
+            const dec = supersoniqueDec.value;
             
             if (heure.length === 5 && hex.length === 2 && dec.length === 2) {
                 const result = vT(heure, hex, dec, true);
                 if (result) {
-                    proboomTime.textContent = result.time;
-                    proboomMulti.textContent = result.multiplier;
-                    proboomResult.style.display = 'block';
-                    saveToHistory('proboom', { time: result.time, multiplier: result.multiplier });
+                    supersoniqueTime.textContent = result.time;
+                    supersoniqueMulti.textContent = result.multiplier;
+                    supersoniqueResult.style.display = 'block';
+                    saveToHistory('supersonique', { time: result.time, multiplier: result.multiplier });
                 }
-            } else {
-                alert('Veuillez remplir tous les champs correctement');
-            }
+            } else alert('Veuillez remplir tous les champs');
         });
 
-        proboomCopy.addEventListener('click', () => {
-            const text = `${proboomTime.textContent} | ${proboomMulti.textContent}`;
-            navigator.clipboard.writeText(text);
-            alert('Copié !');
+        supersoniqueCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(`${supersoniqueTime.textContent} | ${supersoniqueMulti.textContent}`);
+            alert('Copié ✓');
         });
 
         // ============================================
-        // ANTI RAFALE
+        // TURBO
         // ============================================
-        const arHeure = document.getElementById('arHeure');
-        const arMulti = document.getElementById('arMulti');
-        const arDeci = document.getElementById('arDeci');
-        const arCalculer = document.getElementById('arCalculer');
-        const arResult = document.getElementById('arResult');
-        const arTime = document.getElementById('arTime');
-        const arMultiResult = document.getElementById('arMultiResult');
-        const arCopy = document.getElementById('arCopy');
+        const turboHeure = document.getElementById('turboHeure');
+        const turboMulti = document.getElementById('turboMulti');
+        const turboDeci = document.getElementById('turboDeci');
+        const turboCalculer = document.getElementById('turboCalculer');
+        const turboResult = document.getElementById('turboResult');
+        const turboTime = document.getElementById('turboTime');
+        const turboMultiResult = document.getElementById('turboMultiResult');
+        const turboCopy = document.getElementById('turboCopy');
 
-        arHeure.addEventListener('input', (e) => {
+        turboHeure.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '').slice(0, 4);
-            if (val.length > 2) {
-                val = val.slice(0, 2) + ':' + val.slice(2);
-            }
+            if (val.length > 2) val = val.slice(0, 2) + ':' + val.slice(2);
             e.target.value = val;
         });
 
-        arMulti.addEventListener('input', (e) => {
+        turboMulti.addEventListener('input', (e) => {
             let val = e.target.value.replace(/[^0-9.]/g, '');
-            if ((val.match(/\./g) || []).length > 1) {
-                val = val.replace(/\.+$/, '');
-            }
+            if ((val.match(/\./g) || []).length > 1) val = val.replace(/\.+$/, '');
             e.target.value = val;
         });
 
-        arDeci.addEventListener('input', (e) => {
+        turboDeci.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
         });
 
-        arCalculer.addEventListener('click', () => {
-            const heure = arHeure.value;
-            const multi = arMulti.value;
-            const deci = arDeci.value;
+        turboCalculer.addEventListener('click', () => {
+            const heure = turboHeure.value;
+            const multi = turboMulti.value;
+            const deci = turboDeci.value;
             
             if (heure.length === 5 && multi.length > 0 && deci.length === 4) {
-                const result = calculateAntiRafale(heure, multi, deci);
+                const result = calculateTurbo(heure, multi, deci);
                 if (result) {
-                    arTime.textContent = result.time;
-                    arMultiResult.textContent = result.targetMultiplier;
-                    arResult.style.display = 'block';
-                    saveToHistory('antirafale', { 
-                        time: result.time, 
-                        targetMultiplier: result.targetMultiplier 
-                    });
+                    turboTime.textContent = result.time;
+                    turboMultiResult.textContent = result.targetMultiplier;
+                    turboResult.style.display = 'block';
+                    saveToHistory('turbo', { time: result.time, targetMultiplier: result.targetMultiplier });
                 }
-            } else {
-                alert('Veuillez remplir tous les champs correctement');
-            }
+            } else alert('Veuillez remplir tous les champs');
         });
 
-        arCopy.addEventListener('click', () => {
-            const text = `${arTime.textContent} | ${arMultiResult.textContent}`;
-            navigator.clipboard.writeText(text);
-            alert('Copié !');
+        turboCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(`${turboTime.textContent} | ${turboMultiResult.textContent}`);
+            alert('Copié ✓');
         });
 
         // ============================================
-        // GRAIN DE GAIN
+        // MOISSON DORÉE
         // ============================================
-        const grainHeure = document.getElementById('grainHeure');
-        const grainServeur = document.getElementById('grainServeur');
-        const grainJ1 = document.getElementById('grainJ1');
-        const grainJ2 = document.getElementById('grainJ2');
-        const grainJ3 = document.getElementById('grainJ3');
-        const grainCalculer = document.getElementById('grainCalculer');
-        const grainResult = document.getElementById('grainResult');
-        const grainTime = document.getElementById('grainTime');
-        const grainMulti = document.getElementById('grainMulti');
-        const grainCopy = document.getElementById('grainCopy');
+        const moissonHeure = document.getElementById('moissonHeure');
+        const moissonServeur = document.getElementById('moissonServeur');
+        const moissonJ1 = document.getElementById('moissonJ1');
+        const moissonJ2 = document.getElementById('moissonJ2');
+        const moissonJ3 = document.getElementById('moissonJ3');
+        const moissonCalculer = document.getElementById('moissonCalculer');
+        const moissonResult = document.getElementById('moissonResult');
+        const moissonTime = document.getElementById('moissonTime');
+        const moissonMulti = document.getElementById('moissonMulti');
+        const moissonCopy = document.getElementById('moissonCopy');
 
-        grainHeure.addEventListener('input', (e) => {
+        moissonHeure.addEventListener('input', (e) => {
             let val = e.target.value.replace(/\D/g, '').slice(0, 4);
-            if (val.length > 2) {
-                val = val.slice(0, 2) + ':' + val.slice(2);
-            }
+            if (val.length > 2) val = val.slice(0, 2) + ':' + val.slice(2);
             e.target.value = val;
         });
 
-        grainServeur.addEventListener('input', (e) => {
+        moissonServeur.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 2);
         });
 
-        [grainJ1, grainJ2, grainJ3].forEach(input => {
+        [moissonJ1, moissonJ2, moissonJ3].forEach(input => {
             input.addEventListener('input', (e) => {
                 e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 1);
             });
         });
 
-        grainCalculer.addEventListener('click', () => {
-            const heure = grainHeure.value;
-            const serveur = grainServeur.value;
-            const j1 = grainJ1.value;
-            const j2 = grainJ2.value;
-            const j3 = grainJ3.value;
+        moissonCalculer.addEventListener('click', () => {
+            const heure = moissonHeure.value;
+            const serveur = moissonServeur.value;
+            const j1 = moissonJ1.value;
+            const j2 = moissonJ2.value;
+            const j3 = moissonJ3.value;
             
             if (heure.length === 5 && serveur.length === 2 && j1 && j2 && j3) {
-                const result = calculateGrain(heure, serveur, j1, j2, j3);
+                const result = calculateMoisson(heure, serveur, j1, j2, j3);
                 if (result) {
-                    grainTime.textContent = result.time;
-                    grainMulti.textContent = result.multiplier;
-                    grainResult.style.display = 'block';
-                    saveToHistory('graindegain', { 
-                        time: result.time, 
-                        multiplier: result.multiplier 
-                    });
+                    moissonTime.textContent = result.time;
+                    moissonMulti.textContent = result.multiplier;
+                    moissonResult.style.display = 'block';
+                    saveToHistory('moisson', { time: result.time, multiplier: result.multiplier });
                 }
-            } else {
-                alert('Veuillez remplir tous les champs correctement');
-            }
+            } else alert('Veuillez remplir tous les champs');
         });
 
-        grainCopy.addEventListener('click', () => {
-            const text = `${grainTime.textContent} | ${grainMulti.textContent}`;
-            navigator.clipboard.writeText(text);
-            alert('Copié !');
+        moissonCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText(`${moissonTime.textContent} | ${moissonMulti.textContent}`);
+            alert('Copié ✓');
         });
 
         // ============================================
@@ -848,7 +945,7 @@
 
         function updateHistoryDisplay() {
             const historyContent = document.getElementById('historiqueContent');
-            const types = ['bonboom', 'proboom', 'antirafale', 'graindegain'];
+            const types = ['decollage', 'supersonique', 'turbo', 'moisson'];
             const allEntries = [];
             
             types.forEach(type => {
@@ -857,10 +954,10 @@
                 entries.forEach(entry => {
                     allEntries.push({
                         ...entry,
-                        type: type === 'bonboom' ? '🟢 BonBoom' : 
-                              type === 'proboom' ? '🚀 ProBoom' :
-                              type === 'antirafale' ? '🚨 Anti Rafale' : '🛑 Grain de Gain',
-                        display: type === 'antirafale' ? entry.targetMultiplier : entry.multiplier
+                        type: type === 'decollage' ? '🛫 Flash' : 
+                              type === 'supersonique' ? '✈️ Supersonic' :
+                              type === 'turbo' ? '⚡ Turbo' : '🌾 Moisson',
+                        display: type === 'turbo' ? entry.targetMultiplier : entry.multiplier
                     });
                 });
             });
@@ -868,29 +965,25 @@
             allEntries.sort((a, b) => b.id - a.id);
             
             if (allEntries.length === 0) {
-                historyContent.innerHTML = '<p style="color: #5a5a70; text-align: center; padding: 2rem;">Aucun historique pour le moment</p>';
+                historyContent.innerHTML = '<p style="color: #5a5a80; text-align: center; padding: 2rem;">Aucun historique</p>';
                 return;
             }
             
-            let html = '<div style="max-height: 400px; overflow-y: auto;">';
+            let html = '';
             allEntries.slice(0, 30).forEach(entry => {
                 html += `
-                    <div style="background: #1e1e30; border: 1px solid #ffd966; border-radius: 8px; padding: 0.75rem; margin-bottom: 0.5rem;">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="color: #ffd966; font-weight: bold;">${entry.type}</span>
-                            <span style="color: white; font-family: monospace;">${entry.time}</span>
+                    <div class="history-entry">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="history-type">${entry.type}</span>
+                            <span class="history-time">${entry.time}</span>
                         </div>
-                        <div style="color: #a0a0b0; font-size: 0.9rem; margin-top: 0.25rem;">
-                            ${entry.display}
-                        </div>
+                        <div class="history-value">${entry.display}</div>
                     </div>
                 `;
             });
-            html += '</div>';
             historyContent.innerHTML = html;
         }
 
-        // Initialiser l'historique
         updateHistoryDisplay();
     </script>
 </body>
